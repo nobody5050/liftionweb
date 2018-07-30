@@ -55,7 +55,7 @@ function customheader(name, imagelink) {
     // =======================
 
     //put image in the header!
-    if(image != 'undefined') {
+    if(typeof image != 'undefined') {
         document.getElementById("headerprofilepic").src = imagelink;
     }
     //if user does not have image put in a default one
