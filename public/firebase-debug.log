@@ -1,0 +1,87 @@
+[debug] [2018-07-27T20:24:09.115Z] ----------------------------------------------------------------------
+[debug] [2018-07-27T20:24:09.119Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2018-07-27T20:24:09.119Z] CLI Version:   3.19.3
+[debug] [2018-07-27T20:24:09.119Z] Platform:      linux
+[debug] [2018-07-27T20:24:09.119Z] Node Version:  v8.11.3
+[debug] [2018-07-27T20:24:09.119Z] Time:          Fri Jul 27 2018 22:24:09 GMT+0200 (CEST)
+[debug] [2018-07-27T20:24:09.119Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-27T20:24:09.130Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-27T20:24:09.130Z] > authorizing via signed-in user
+[debug] [2018-07-27T20:24:09.133Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/liftion-official  
+  
+ Fri Jul 27 2018 22:24:09 GMT+0200 (CEST)
+[debug] [2018-07-27T20:24:10.201Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-27T20:24:10.202Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/liftion-official/tokens  
+  
+ Fri Jul 27 2018 22:24:10 GMT+0200 (CEST)
+[debug] [2018-07-27T20:24:11.006Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-27T20:24:11.008Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/liftion-official  
+  
+ Fri Jul 27 2018 22:24:11 GMT+0200 (CEST)
+[debug] [2018-07-27T20:24:12.258Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/yoris/liftionwebprojectinfirebase'...
+[info] 
+[debug] [2018-07-27T20:24:12.261Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/41555807831/clients/_:getWebAppConfig  
+  
+ Fri Jul 27 2018 22:24:12 GMT+0200 (CEST)
+[debug] [2018-07-27T20:24:13.033Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-07-27T22:04:49.207Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-07-27T22:04:49.210Z] Error: socket hang up
+    at createHangUpError (_http_client.js:331:15)
+    at TLSSocket.socketCloseListener (_http_client.js:363:23)
+    at emitOne (events.js:121:20)
+    at TLSSocket.emit (events.js:211:7)
+    at _handle.close (net.js:557:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:356:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-07-27T22:04:53.968Z] ----------------------------------------------------------------------
+[debug] [2018-07-27T22:04:53.971Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2018-07-27T22:04:53.972Z] CLI Version:   3.19.3
+[debug] [2018-07-27T22:04:53.972Z] Platform:      linux
+[debug] [2018-07-27T22:04:53.972Z] Node Version:  v8.11.3
+[debug] [2018-07-27T22:04:53.972Z] Time:          Sat Jul 28 2018 00:04:53 GMT+0200 (CEST)
+[debug] [2018-07-27T22:04:53.972Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-27T22:04:53.983Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-27T22:04:53.984Z] > authorizing via signed-in user
+[debug] [2018-07-27T22:04:53.986Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-27T22:04:53.987Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/GzWfuZNO1v9IQaf9Rd4nFVmgAvncjvzc7SdngVbB-iIljvOa4gUb8h3r7FySKa2T',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jul 28 2018 00:04:53 GMT+0200 (CEST)
+[debug] [2018-07-27T22:05:04.588Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-27T22:05:04.595Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/liftion-official  
+  
+ Sat Jul 28 2018 00:05:04 GMT+0200 (CEST)
+[debug] [2018-07-27T22:05:05.795Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-27T22:05:05.796Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/liftion-official/tokens  
+  
+ Sat Jul 28 2018 00:05:05 GMT+0200 (CEST)
+[debug] [2018-07-27T22:05:06.709Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-27T22:05:06.711Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/liftion-official  
+  
+ Sat Jul 28 2018 00:05:06 GMT+0200 (CEST)
+[debug] [2018-07-27T22:05:07.991Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/yoris/liftionwebprojectinfirebase'...
+[info] 
+[debug] [2018-07-27T22:05:07.994Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/41555807831/clients/_:getWebAppConfig  
+  
+ Sat Jul 28 2018 00:05:07 GMT+0200 (CEST)
+[debug] [2018-07-27T22:05:09.118Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lkiftion</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.3.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!--basic style pls replace later-->
+    <style>
+      .header #headerprofilepic{
+        width: 100px;
+      }
+      .allposts img {
+        width: 200px;
+        height: auto;
+      }
+    </style>
+    <!--==================-->
+  </head>
+  <body>
+    
+      <script src="app.js"></script>
+
+
+      <!--header-->
+      <div class="header">
+        <img id="headerprofilepic">
+        <p id="headername"></p>
+      </div>
+      <!--================-->
+
+
+
+    <!--login here-->
+    <div class="login" id="loginform">
+        <p id="errorwhenlogginin"></p>
+        <input type="email" placeholder="email" id="emailsignin">
+        <input type="password" placeholder="password" id="passwordsignin">
+        <button onclick="logIn()">LogIn</button>
+
+    </div>
+    <!--===========-->
+    
+    <!--display all the posts here-->
+    <div class="allposts" id="containerofallposts"></div>
+    <!--===========================-->
+
+
+  </body>
+</html>
