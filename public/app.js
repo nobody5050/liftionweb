@@ -1,6 +1,7 @@
 var username;
-
+var defaultpicture = "https://image.flaticon.com/icons/svg/149/149071.svg";
 document.addEventListener('DOMContentLoaded', function() {
+
     var app = firebase.app();
     const db = firebase.firestore();
 
@@ -30,6 +31,13 @@ function logIn() {
         document.getElementById("errorwhenlogginin").innerHTML = error;
     });
     //========================
+    //cache images
+        db.collection("users").get().then(event => {
+            event.forEach(data => {
+                localStorage.setItem(data.data().name, data.data().image); 
+            })
+        });
+    //=============
 }
 //=============
 
@@ -60,7 +68,7 @@ function customheader(name, imagelink) {
     }
     //if user does not have image put in a default one
     else {
-        document.getElementById("headerprofilepic").src = "https://image.flaticon.com/icons/svg/149/149071.svg";
+        document.getElementById("headerprofilepic").src = defaultpicture;
     }
     //=================
     //====================
@@ -76,17 +84,33 @@ function getposts() {
     db.collection("posts").where("audience", "==", "public").get().then(allposts => {
         allposts.forEach(post => {
             data = post.data();
-            console.log(data.text);
-            document.getElementById("containerofallposts").innerHTML += '<div class="post">'
-            //if post contains images, add them 
+            
+
+            //put in the author info
+            var imagelink = localStorage.getItem(data.author) || defaultpicture;
+            if (typeof imagelink == "null" || imagelink == "null" || typeof imagelink == 'null' || typeof imagelink == 'undefined' || imagelink == "undefined") {
+                imagelink = defaultpicture;
+            }            
+            // =============================================
+            // put in the tag info
+            var tag = data.tag;
+            if (typeof tag == "null" || tag == "null" || typeof tag == 'null' || typeof tag == 'undefined' || tag == "undefined") {
+                tag = "";
+            }      
+            else {
+                tag = ' #'+tag;
+            }
+            //=====================
+            
+            //ddifferent post structere if  post contains images, add them 
             if(typeof data.image != 'undefined') {
                 if(data.image != null) {
-                    document.getElementById("containerofallposts").innerHTML += '<img src="'+data.image+'">';
+                    document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'<br>'+'</a>'+'<img src="'+data.image+'">'+'<p>'+data.text+'</p>'+'</div>';
                 }
+                document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
             }
+            document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
             //============================
-            document.getElementById("containerofallposts").innerHTML += data.text;
-            document.getElementById("containerofallposts").innerHTML += '</div>'
         });
     })
 }
