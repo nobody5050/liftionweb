@@ -49,6 +49,7 @@ function getname() {
     
     db.collection("users").doc(firebase.auth().currentUser.uid).get().then(event => {
         data = event.data();
+        username = data.name;
         customheader(data.name, data.image);
     });
 }
@@ -83,9 +84,8 @@ function getposts() {
     const db = firebase.firestore();
     db.collection("posts").where("audience", "==", "public").get().then(allposts => {
         allposts.forEach(post => {
-            data = post.data();
-            
-
+            data = post.data(); 
+            console.log(post.id);
             //put in the author info
             var imagelink = localStorage.getItem(data.author) || defaultpicture;
             if (typeof imagelink == "null" || imagelink == "null" || typeof imagelink == 'null' || typeof imagelink == 'undefined' || imagelink == "undefined") {
@@ -101,17 +101,55 @@ function getposts() {
                 tag = ' #'+tag;
             }
             //=====================
-            
+
+            //make delete button on owned posts TESTING FEATURE!
+            if (data.author_uid == firebase.auth().currentUser.uid) {
+                var deletebutton = '<button class="deletepost" onclick="deletePost(\''+post.id+'\')">delete post</button>';
+            }
+            else {
+                var deletebutton = "";
+            }
+            //============================
+
+
             //ddifferent post structere if  post contains images, add them 
             if(typeof data.image != 'undefined') {
                 if(data.image != null) {
-                    document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'<br>'+'</a>'+'<img src="'+data.image+'">'+'<p>'+data.text+'</p>'+'</div>';
+                    document.getElementById("containerofallposts").innerHTML += '<div class="post" id="'+post.id+'">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+deletebutton+'</div>'+'<a class="tag">'+tag+'<br>'+'</a>'+'<img src="'+data.image+'">'+'<p>'+data.text+'</p>'+'</div>';
                 }
-                document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
+                document.getElementById("containerofallposts").innerHTML += '<div class="post" id="'+post.id+'">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+deletebutton+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
             }
-            document.getElementById("containerofallposts").innerHTML += '<div class="post">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
+            document.getElementById("containerofallposts").innerHTML += '<div class="post" id="'+post.id+'">'+'<div class="authorofpost">'+'<p>'+data.author+'</p>' +'<img src="'+imagelink+'">'+deletebutton+'</div>'+'<a class="tag">'+tag+'</a>'+'<br>'+'<p>'+data.text+'</p>'+'</div>';
             //============================
         });
     })
 }
 //=========================
+
+// create posts
+function createNewPost() {
+    const db = firebase.firestore();
+    // make sure post input is not empty
+    var posttext = document.getElementById("postcreationclasstext").value;
+    if (posttext !== "" ) {
+        db.collection("posts").add({
+            audience: "public",
+            author: username,
+            author_uid: firebase.auth().currentUser.uid,
+            created: new Date,
+            tag: null,
+            text: posttext,
+            versionCode: 1,
+            versionType: "web"
+        })
+    }
+}
+//=================================
+
+// delete post when the delete button is clicked
+function deletePost(id) {
+    const db = firebase.firestore();
+    document.getElementsById(id).remove;
+    db.collection("posts").doc(id).delete();
+}
+//==============================================
